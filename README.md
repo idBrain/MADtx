@@ -64,8 +64,7 @@ Privacy in lightning network is clearly better if compared to regular transactio
 
 MAD transactions also offer an improvement in privacy since they break the common-input-ownership heuristic and if used widely could improve privacy for the whole Bitcoin network. Is worth to note that trying to double spend MAD transactions will trigger the nuclear transaction that not only generates losses for both sides also reveals the ownership of the inputs due to the SIGHASH flags creating another incentive to not double spend.
 
-
-Table comparing LN and MADtx
+![Table comparing LN and MADtx](Tabela.png)
 ## Conclusion
 Will MAD transactions make zero confirmation transactions completely trustless? No. Zero confirmation transactions still are a [second class citizen](https://bitcointalk.org/index.php?topic=1306.msg14714#msg14714) and will probably never be as secure as confirmed transactions. But MAD transactions try to give some trustlessness to zero confirmation transactions using a bit of game theory.
 
