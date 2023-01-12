@@ -1,1 +1,1 @@
-# MADtx
+# MAD Transactions: Mutual Assured Destruction Transactions
