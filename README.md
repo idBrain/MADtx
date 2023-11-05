@@ -15,6 +15,8 @@ Since in full-RBF any double spend will be “allowed” in the mempool, let’s
 - The customer creates a partially signed PayJoin transaction. Customer also creates another transaction using merchant’s input and his UTXOs that must have, in aggregate, at least **twice the value of the good being purchased**. If the number of UTXOs in the set is just one then the customer signs the input using SIGHASH_SINGLE flag together with the ouput to his change address receiving **all the value of his UTXO minus twice the value of the good**. If the number of UTXOs in the set is greater than one then a single input is signed with SIGHASH_SINGLE flag with the corresponding output and all the other inputs are signed using SIGHASH_NONE flag. At least one of the UTXOs must be present in both partially signed transactions. Customer then sends the two transactions back to merchant.
 - Merchant signs the PayJoin transaction and broadcasts it and keeps the partial signed transaction to himself.
 
+![MADtx example](MAD2.png)
+
 Now let’s see how this configuration can minimize trust in zero confirmation transactions. Because the customer has complete control over his UTXOs he can double spend them, but if he tries it as soon as the merchant sees a double spend of the PayJoin transaction in the mempool, the merchant can immediately broadcast the partial signed transaction with a slightly higher fee, which will be funded by the customer’s UTXO set.
 
 When customer sees the merchant’s double spend he can try the same strategy increasing the fee so his new double spend transaction will be the one to be mined. It is easy to realize that this bid war will progress until the merchant has used the complete value of the customer’s UTXO for the fee and independently of who’s transaction has been mined we will reach the following scenario.
@@ -69,7 +71,7 @@ Privacy in lightning network is clearly better if compared to regular transactio
 
 MAD transactions also offer an improvement in privacy since they break the common-input-ownership heuristic and if used widely could improve privacy for the whole Bitcoin network. Is worth to note that trying to double spend MAD transactions will trigger the nuclear transaction that not only generates losses for both sides also reveals the ownership of the inputs due to the SIGHASH flags creating another incentive to not double spend.
 
-![Table comparing LN and MADtx](Tabela.png)
+![Table comparing LN and MADtx](Tabela2.png)
 ## Conclusion
 Will MAD transactions make zero confirmation transactions completely trustless? No. Zero confirmation transactions still are a [second class citizen](https://bitcointalk.org/index.php?topic=1306.msg14714#msg14714) and will probably never be as secure as confirmed transactions. But MAD transactions try to give some trustlessness to zero confirmation transactions using a bit of game theory.
 
