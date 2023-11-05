@@ -26,7 +26,7 @@ The merchant will be deprived of his product which values P bitcoins, and the cu
 The MAD situation is inescapable if someone deviates from agreement, so from the implementation point of view one single double spend transaction can be produce to save time and to deterrent the double spend, that transaction will consume twice the value of the good as fee using the partial signed transaction. This transaction is called: **nuclear transaction**.
 
 ## Security
-#### Colussion with Miners
+#### Collusion with Miners
 In which ways can this design go wrong? The critical part is the possibility of response from any side that faces a double spend and this possibility can be nullified if the attacker can hide his double spend transaction from the victim. The only way to do this is sending his transaction directly to a mining pool that must keep it private. Is there any incentive for the mining pool to keep the transaction private? No. Actually, if the mining pool has **λ** percentage of the hashrate, on average, the expected return that the mining pool will get exposing the double spend and then triggering the nuclear transaction is twice the price of the good times **λ**.
 
 So, if the customer wants to execute a double spend, he has to share the profit with the mining pool, where the value has to be at least what the mining pool would get exposing the double spend. Let’s try to analize it:
